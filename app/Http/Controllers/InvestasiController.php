@@ -49,6 +49,16 @@ class InvestasiController extends Controller
      */
     public function store(StoreInvestasiRequest $request)
     {
+        // insert data ke table pegawai
+        DB::table('investasi')->insert([
+            'nama_perusahaan' => $request->nama_perusahaan,
+            'nama_investor' => $request->nama_investor,
+            'jml_investasi' => $request->jml_investasi,
+            'hasil_investasi' => 0,
+            'tgl_investasi' => date('Y-m-d', strtotime($request->tgl_investasi)),
+        ]);
+        // alihkan halaman ke halaman pegawai
+        return redirect('/investasi');
     }
 
     /**
