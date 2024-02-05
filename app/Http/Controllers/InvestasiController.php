@@ -98,6 +98,10 @@ class InvestasiController extends Controller
      */
     public function destroy(Investasi $investasi)
     {
-        //
+        // menghapus data pegawai berdasarkan id yang dipilih
+        DB::table('investasi')->where('id',$id)->delete();
+            
+        // alihkan halaman ke halaman pegawai
+        return redirect('/investasi');
     }
 }
