@@ -96,7 +96,7 @@ class InvestasiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Investasi $investasi)
+    public function destroy($id)
     {
         // menghapus data pegawai berdasarkan id yang dipilih
         DB::table('investasi')->where('id',$id)->delete();
