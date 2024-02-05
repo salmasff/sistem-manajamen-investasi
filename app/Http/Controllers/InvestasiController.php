@@ -36,7 +36,12 @@ class InvestasiController extends Controller
      */
     public function create()
     {
-        //
+        $user = auth()->user();
+        return view('investasi/tambah',
+            [
+                'user' => $user,
+            ]
+        );
     }
 
     /**
@@ -44,12 +49,6 @@ class InvestasiController extends Controller
      */
     public function store(StoreInvestasiRequest $request)
     {
-        $user = auth()->user();
-        return view('investasi/tambah',
-            [
-                'user' => $user,
-            ]
-        );
     }
 
     /**
