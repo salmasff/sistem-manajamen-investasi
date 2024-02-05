@@ -26,5 +26,7 @@ Route::get('/investasi', 'App\Http\Controllers\InvestasiController@index')->midd
 Route::get('/investasi/tambah','App\Http\Controllers\InvestasiController@create')->middleware(['auth', 'verified'])->name('tambah');
 Route::post('/investasi/store','App\Http\Controllers\InvestasiController@store')->middleware(['auth', 'verified'])->name('tambah2');
 Route::get('/investasi/edit/{id}','App\Http\Controllers\InvestasiController@edit')->middleware(['auth', 'verified'])->name('edit');
+Route::post('/investasi/update','App\Http\Controllers\InvestasiController@update')->middleware(['auth', 'verified'])->name('edit2');
+Route::get('/investasi/hapus/{id}','App\Http\Controllers\InvestasiController@destroy')->middleware(['auth', 'verified'])->name('hapus');
 
 require __DIR__.'/auth.php';
