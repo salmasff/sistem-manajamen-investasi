@@ -44,7 +44,12 @@ class InvestasiController extends Controller
      */
     public function store(StoreInvestasiRequest $request)
     {
-        //
+        $user = auth()->user();
+        return view('investasi/tambah',
+            [
+                'user' => $user,
+            ]
+        );
     }
 
     /**
