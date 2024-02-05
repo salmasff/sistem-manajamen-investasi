@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Investasi;
 use App\Http\Requests\StoreInvestasiRequest;
 use App\Http\Requests\UpdateInvestasiRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class InvestasiController extends Controller
 {
@@ -13,7 +16,19 @@ class InvestasiController extends Controller
      */
     public function index()
     {
-        //
+        $investasi = Investasi::all();
+        $user = auth()->user();
+
+        $sum = DB::table('investasi')->sum('jml_investasi');
+        $nilai_perusahaan = $sum * 210000;
+
+        return view('investasi/investasi',
+            [
+                'user' => $user,
+                'nilai_perusahaan' => $nilai_perusahaan,
+                'investasi' => $investasi,
+            ]
+        );
     }
 
     /**
