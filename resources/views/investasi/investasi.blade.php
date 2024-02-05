@@ -70,14 +70,29 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        @foreach ($investasi as $index => $i)
+                                            <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $i->nama_perusahaan }}</td>
+                                            <td>{{ $i->nama_investor }}</td>
+                                            <td>Rp. {{ number_format($i->jml_investasi,0,',','.') }}</td>
+                                            {{-- <td>Rp. {{ number_format($i->hasil_investasi,0,',','.') }}</td> --}}
+                                            <td>{{ date('d/m/Y', strtotime($i->tgl_investasi)) }}</td>
+                                            <td style="text-align: center">
+                                                <a href="/investasi/edit/{{ $i->id }}" class="btn btn-warning btn-sm">
+                                                <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="/investasi/hapus/{{ $i->id }}" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin?')">
+                                                <i class="fas fa-trash"></i>
+                                                </a>
+                                            </td>
+                                            </tr>        
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-
-                    
                 </div>
                 <!-- /.container-fluid -->
 
