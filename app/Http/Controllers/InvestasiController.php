@@ -72,9 +72,17 @@ class InvestasiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Investasi $investasi)
+    public function edit($id)
     {
-        //
+        // mengambil data pegawai berdasarkan id yang dipilih
+        $investasi = DB::table('investasi')->where('id',$id)->get();
+        $user = auth()->user();
+        
+        // passing data pegawai yang didapat ke view edit.blade.php
+        return view('investasi/edit',[
+            'investasi' => $investasi,
+            'user' => $user
+        ]);
     }
 
     /**
